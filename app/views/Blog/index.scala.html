@@ -1,0 +1,11 @@
+@(articles:Seq[models.Article])
+
+@main("Blog") {
+  
+  <ul>
+    @articles.map { article =>
+      <li><a href="@{ "/blog/%tY/%<tm/%<td/" format article.posted }@article.slug">@article.title</a></li>
+    }
+  </ul>
+  
+}

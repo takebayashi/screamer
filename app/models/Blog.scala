@@ -31,4 +31,10 @@ class Blog(val database:MongoDB) {
     }
   }
   
+  def recentArticles(count:Int):Seq[Article] = {
+    collection.find().limit(count).toList map { a =>
+      Article(a)
+    }
+  }
+  
 }
