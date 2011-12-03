@@ -1,6 +1,7 @@
 package models
 
 import com.mongodb.casbah.Imports._
+import java.util.Date
 
 object Blog {
   
@@ -20,6 +21,13 @@ class Blog(val database:MongoDB) {
     collection.findOne(MongoDBObject("slug" -> slug)) match {
       case Some(a) => Some(Article(a))
       case None => None
+    }
+  }
+  
+  def articlesBetween(start:Date, end:Date):Seq[Article] = {
+    val condition = ("posted" $gte start) ++ ("posted" $lt end)
+    collection.find(condition).toList map { a =>
+      Article(a)
     }
   }
   
