@@ -21,11 +21,18 @@ object Blog extends Controller {
     Ok(views.html.Blog.index(blog.recentArticles(10)))
   }
   
-  def list(year:Int) = Action {
+  def year(year:Int) = Action {
     val newYear = new DateTime(year, 1, 1, 0, 0)
     val nextYear = newYear + 1.year
     val articles = blog.articlesBetween(newYear.toDate(), nextYear.toDate())
     Ok(views.html.Blog.year(year, articles))
+  }
+  
+  def month(year:Int, month:Int) = Action {
+    val newMonth = new DateTime(year, month, 1, 0, 0)
+    val nextMonth = newMonth + 1.month
+    val articles = blog.articlesBetween(newMonth.toDate(), nextMonth.toDate())
+    Ok(views.html.Blog.month(year, month, articles))
   }
   
   def detail(year:Int, month:Int, day:Int, slug:String) = Action {

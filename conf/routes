@@ -7,8 +7,9 @@ GET     /                           controllers.Application.index()
 
 # Blog
 GET     /blog                       controllers.Blog.index()
-GET     /blog/$year<[0-9]{4}>       controllers.Blog.list(year:Int)
-GET     /blog/$year<[0-9]{4}>/$month<[0-1][0-3]>/$day<[0-3][0-9]>/:slug controllers.Blog.detail(year:Int, month:Int, day:Int, slug)
+GET     /blog/$year<[0-9]{4}>       controllers.Blog.year(year:Int)
+GET     /blog/$year<[0-9]{4}>/$month<[0-1][0-9]> controllers.Blog.month(year:Int, month:Int)
+GET     /blog/$year<[0-9]{4}>/$month<[0-1][0-9]>/$day<[0-3][0-9]>/:slug controllers.Blog.detail(year:Int, month:Int, day:Int, slug)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
