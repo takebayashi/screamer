@@ -5,10 +5,13 @@ import PlayProject._
 object ApplicationBuild extends Build {
 
     val appName         = "screamer"
-    val appVersion      = "1.0"
+    val appVersion      = "0.0.1"
 
     val appDependencies = Seq(
-      // Add your project dependencies here,
+      "com.mongodb.casbah" % "casbah_2.9.0-1" % "2.1.5.0",
+      "joda-time" % "joda-time" % "2.0",
+      "org.joda" % "joda-convert" % "1.1",
+      "org.scala-tools.time" % "time_2.9.1" % "0.5"
     )
 
     val main = PlayProject(appName, appVersion, appDependencies).settings(defaultScalaSettings:_*).settings(
