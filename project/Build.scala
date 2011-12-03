@@ -5,7 +5,7 @@ import PlayProject._
 object ApplicationBuild extends Build {
 
     val appName         = "screamer"
-    val appVersion      = "1.0"
+    val appVersion      = "0.0.1"
 
     val appDependencies = Seq(
       "com.mongodb.casbah" % "casbah_2.9.0-1" % "2.1.5.0",
