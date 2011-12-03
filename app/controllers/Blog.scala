@@ -20,4 +20,18 @@ object Blog extends Controller {
     Ok(views.html.Blog.index(blog.recentArticles(10)))
   }
   
+  def detail(year:Int, month:Int, day:Int, slug:String) = Action {
+    import org.scala_tools.time.Imports._
+    import models.Article
+    
+    val date = new DateTime(year, month, day, 0, 0)
+    val nextDay = date + 1.day
+    blog.articlesBetween(date.toDate(), nextDay.toDate()) find { a =>
+      a.slug == slug
+    } match {
+      case Some(a) => Ok(views.html.Blog.detail(a))
+      case None => NotFound
+    }
+  }
+  
 }
