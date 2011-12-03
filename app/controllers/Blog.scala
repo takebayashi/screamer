@@ -2,6 +2,7 @@ package controllers
 
 import play.api._
 import play.api.mvc._
+import org.scala_tools.time.Imports._
 
 object Blog extends Controller {
   
@@ -20,8 +21,14 @@ object Blog extends Controller {
     Ok(views.html.Blog.index(blog.recentArticles(10)))
   }
   
+  def list(year:Int) = Action {
+    val newYear = new DateTime(year, 1, 1, 0, 0)
+    val nextYear = newYear + 1.year
+    val articles = blog.articlesBetween(newYear.toDate(), nextYear.toDate())
+    Ok(views.html.Blog.year(year, articles))
+  }
+  
   def detail(year:Int, month:Int, day:Int, slug:String) = Action {
-    import org.scala_tools.time.Imports._
     import models.Article
     
     val date = new DateTime(year, month, day, 0, 0)
