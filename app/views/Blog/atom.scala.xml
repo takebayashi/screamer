@@ -1,6 +1,6 @@
 @(articles:Seq[models.Article])<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>My Blog</title>
+  <title>@models.Website.title</title>
   <link href="http://example.org/"/>
   <updated>@{
     val updated = articles.firstOption match {
@@ -10,13 +10,19 @@
     "%tFT%<tT%<tz" format updated
   }</updated>
   <author>
-    <name>Taro Yamada</name>
+    <name>@models.Website.owner</name>
   </author>
   @articles.map { a =>
     <entry>
       <title>@a.title</title>
       <link href="@{ "/blog/%tY/%<tm/%<td/" format a.posted }@a.slug"/>
-      <id>urn:uuid:myblog.@a.slug</id>
+      <id>http://@{
+        models.Website.domain
+      }/@{
+        "blog/%tY/%<tm/%<td/" format a.posted
+      }@{
+        a.slug
+      }</id>
       <updated>@{ "%tFT%<tT%<tz" format a.posted }</updated>
       <summary>@a.body</summary>
     </entry>
