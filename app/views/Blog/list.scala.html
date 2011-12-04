@@ -2,9 +2,10 @@
 
 @main(title)(navigations) {
   
+  <h2>@title</h2>
   <ul>
     @articles.map { article =>
-      <li><a href="/blog@article.pathId">@article.title</a></li>
+      <li><a href="/blog@article.pathId">@article.title</a> (@{"%tF" format article.posted})</li>
     }
   </ul>
   

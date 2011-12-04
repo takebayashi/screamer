@@ -7,11 +7,14 @@
 )) {
   
   <h2>@article.title</h2>
-  <div>
+  <article>
     @{
       val md = new com.petebevin.markdown.MarkdownProcessor()
       Html(md.markdown(article.body))
     }
-  </div>
+  </article>
+  <section class="article-footer">
+    <p>Posted at @{"%tF" format article.posted}</p>
+  </section>
   
 }

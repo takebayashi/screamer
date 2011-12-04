@@ -1,0 +1,89 @@
+@first-color: #191970;
+@second-color: #ffffff;
+@third-color: #002451;
+@content-color: #000000;
+
+@page-width: 900px;
+
+.main-block {
+  @paddings: 20px;
+  width: @page-width - @paddings - @paddings;
+  padding: @paddings;
+  margin: 10px auto 0 auto;
+  background-color: @second-color;
+  color: @content-color;
+  border-radius: 5px;
+}
+
+.white-link {
+  color: @second-color;
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: @first-color;
+  color: @second-color;
+  font-family: 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN';
+}
+
+header {
+  margin: 0 0 0px 0;
+  background-color: @third-color;
+  h1 {
+    @paddings: 20px;
+    width: @page-width - @paddings - @paddings;
+    margin: 0 auto 0 auto;
+    padding: @paddings;
+    a {
+      .white-link
+    }
+  }
+}
+
+nav {
+  margin: 0;
+  background-color: @content-color;
+  color: @second-color;
+  ul {
+    @paddings: 20px;
+    width: @page-width - @paddings - @paddings;
+    margin: auto auto auto auto;
+    padding: 0 @paddings 0 @paddings;
+  }
+  li {
+    display: inline;
+    + li:before {
+      content: ' > ';
+    }
+  }
+  a {
+    .white-link
+  }
+}
+
+#main {
+  .main-block;
+}
+
+h2 {
+  margin: 0;
+}
+
+article p {
+  text-indent: 1em;
+}
+
+.article-footer {
+  margin-top: 1em;
+  font-size: 90%;
+  text-align: right;
+}
+
+footer {
+  .main-block;
+  background-color: @third-color;
+  color: @second-color;
+  text-align: center;
+}
