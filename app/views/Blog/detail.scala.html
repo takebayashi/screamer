@@ -7,6 +7,11 @@
 )) {
   
   <h2>@article.title</h2>
-  <div>@article.body</div>
+  <div>
+    @{
+      val md = new com.petebevin.markdown.MarkdownProcessor()
+      Html(md.markdown(article.body))
+    }
+  </div>
   
 }
