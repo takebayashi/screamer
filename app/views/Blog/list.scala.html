@@ -1,6 +1,6 @@
-@(title:String, articles:Seq[models.Article])
+@(title:String, articles:Seq[models.Article])(navigations:Seq[(String, String)])
 
-@main(title) {
+@main(title)(navigations) {
   
   <ul>
     @articles.map { article =>
