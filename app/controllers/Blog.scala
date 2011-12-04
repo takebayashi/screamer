@@ -48,4 +48,12 @@ object Blog extends Controller {
     }
   }
   
+  def feed(format:String) = Action {
+    val articles = blog.recentArticles(10)
+    format match {
+      case "atom" => Ok(views.xml.Blog.atom(articles))
+      case _ => NotFound
+    }
+  }
+  
 }
