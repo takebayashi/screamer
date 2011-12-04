@@ -1,6 +1,10 @@
 @(article:models.Article)
 
-@main(article.title) {
+@main(article.title)(List(
+  "/" -> "Home",
+  "/blog" -> "Blog",
+  "/blog" + article.pathId -> article.title
+)) {
   
   <h2>@article.title</h2>
   <div>@article.body</div>

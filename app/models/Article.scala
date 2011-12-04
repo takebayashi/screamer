@@ -5,7 +5,11 @@ import java.util.Date
 case class Article(slug:String,
                    title:String,
                    body:String,
-                   posted:Date)
+                   posted:Date) {
+  
+  val pathId = ("/%tY/%<tm/%<td/" format posted) + slug
+  
+}
 
 object Article {
   

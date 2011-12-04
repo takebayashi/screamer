@@ -1,4 +1,4 @@
-@(title: String)(content: Html)
+@(title: String)(navigations:Seq[(String, String)])(content: Html)
 
 <!DOCTYPE html>
 <html>
@@ -8,11 +8,19 @@
       <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
       <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
       <script src="@routes.Assets.at("javascripts/jquery-1.6.4.min.js")" type="text/javascript"></script>
+      <link rel="alternate" type="application/atom+xml" href="/blog/feed.atom" title="Atom">
   </head>
   <body>
     <header>
       <h1>My Website</h1>
     </header>
+    <nav>
+      <ul>
+        @navigations.map { nav =>
+          <li><a href="@nav._1">@nav._2</a></li>
+        }
+      </ul>
+    </nav>
     <article>
       @content
     </article>

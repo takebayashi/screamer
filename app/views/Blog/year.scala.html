@@ -1,3 +1,8 @@
 @(year:Int, articles:Seq[models.Article])
 
-@list(year.toString, articles)
+@list(year.toString, articles)(List(
+  "/" -> "Home",
+  "/blog" -> "Blog",
+  "/blog/" + year -> year.toString
+))
+

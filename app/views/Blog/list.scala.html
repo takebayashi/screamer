@@ -1,10 +1,10 @@
-@(title:String, articles:Seq[models.Article])
+@(title:String, articles:Seq[models.Article])(navigations:Seq[(String, String)])
 
-@main(title) {
+@main(title)(navigations) {
   
   <ul>
     @articles.map { article =>
-      <li><a href="@{ "/blog/%tY/%<tm/%<td/" format article.posted }@article.slug">@article.title</a></li>
+      <li><a href="/blog@article.pathId">@article.title</a></li>
     }
   </ul>
   
