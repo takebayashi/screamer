@@ -1,4 +1,4 @@
-@(title: String)(content: Html)
+@(title: String)(navigations:Seq[(String, String)])(content: Html)
 
 <!DOCTYPE html>
 <html>
@@ -14,6 +14,13 @@
     <header>
       <h1>My Website</h1>
     </header>
+    <nav>
+      <ul>
+        @navigations.map { nav =>
+          <li><a href="@nav._1">@nav._2</a></li>
+        }
+      </ul>
+    </nav>
     <article>
       @content
     </article>

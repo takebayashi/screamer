@@ -1,3 +1,6 @@
 @(articles:Seq[models.Article])
 
-@list("Blog", articles)
+@list("Blog", articles)(List(
+  "/" -> "Home",
+  "/blog" -> "Blog"
+))
