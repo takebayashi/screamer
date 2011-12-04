@@ -31,8 +31,8 @@ class Blog(val database:MongoDB) {
     }
   }
   
-  def recentArticles(count:Int):Seq[Article] = {
-    collection.find().limit(count).toList map { a =>
+  def recentArticles(count:Int, page:Int = 1):Seq[Article] = {
+    collection.find().skip((page - 1) * count).limit(count).toList map { a =>
       Article(a)
     }
   }

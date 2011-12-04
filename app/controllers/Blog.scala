@@ -17,8 +17,8 @@ object Blog extends Controller {
     B(host, port, username, password)
   }
   
-  def index = Action {
-    Ok(views.html.Blog.index(blog.recentArticles(10)))
+  def index(page:Int = 1) = Action {
+    Ok(views.html.Blog.index(blog.recentArticles(10, page)))
   }
   
   def year(year:Int) = Action {
